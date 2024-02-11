@@ -247,8 +247,12 @@ func FindOrInstallResticBinary() (string, error) {
 	// Check for restic installation in data directory.
 	resticInstallPath := path.Join(env.DataDir(), resticBinName)
 	if runtime.GOOS == "windows" {
-		programFiles := os.Getenv("programfiles")
-		resticInstallPath = path.Join(programFiles, "backrest", resticBinName)
+		cfgDir, err := os.UserConfigDir()
+		if err != nil {
+			panic(fmt.Errorf("couldn't determine config directory: %v", err))
+		}
+
+		resticInstallPath = path.Join(cfgDir, "restic", fmt.Sprintf("restic-%v.exe", RequiredResticVersion))
 	}
 
 	// Install restic if not found.
