@@ -419,7 +419,7 @@ var EnvToPropagate = []string{
 	// *nix systems
 	"PATH", "HOME", "XDG_CACHE_HOME", "XDG_CONFIG_HOME", "XDG_DATA_HOME",
 	// windows
-	"APPDATA", "LOCALAPPDATA",
+	"APPDATA", "LOCALAPPDATA", "ProgramData",
 }
 
 func WithPropagatedEnvVars(extras ...string) GenericOption {
