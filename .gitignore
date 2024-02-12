@@ -3,3 +3,4 @@ backrest-*
 dist
 backrest.exe
 __debug_bin
+.vscode
